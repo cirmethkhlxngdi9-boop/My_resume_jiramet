@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>จิรเมธ คล่องดี — Resume</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Sarabun', sans-serif;
+            background: #0f0f0f;
+            color: #e8e8e8;
+            min-height: 100vh;
+        }
+
+        .page {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            padding: 60px 50px;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: rgba(83, 141, 220, 0.08);
+            top: -80px;
+            right: -60px;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: rgba(83, 141, 220, 0.05);
+            bottom: -60px;
+            left: 200px;
+        }
+
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid #538ddc;
+            object-fit: cover;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 1;
+            background: #1e3a5f;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 42px;
+            font-weight: 700;
+            color: #538ddc;
+        }
+
+        .hero-text { position: relative; z-index: 1; }
+
+        .hero-text h1 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+            margin-bottom: 6px;
+        }
+
+        .hero-text .role {
+            font-size: 15px;
+            color: #538ddc;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .hero-text .bio {
+            font-size: 15px;
+            color: #a0a8b8;
+            line-height: 1.7;
+            max-width: 460px;
+        }
+
+        /* Content */
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 0;
+            background: #141414;
+        }
+
+        .main { padding: 40px 50px; border-right: 1px solid #222; }
+        .sidebar { padding: 40px 32px; background: #111; }
+
+        /* Section */
+        .section { margin-bottom: 40px; }
+
+        .section-title {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #538ddc;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #222;
+        }
+
+        /* Skills */
+        .skill-group { margin-bottom: 16px; }
+        .skill-label {
+            font-size: 13px;
+            color: #a0a8b8;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .skill-bar {
+            height: 4px;
+            background: #222;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .skill-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #538ddc, #7fb3f5);
+            border-radius: 4px;
+        }
+
+        /* Tags */
+        .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+        .tag {
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+            border: 1px solid #2a3a50;
+            background: #1a2840;
+            color: #7fb3f5;
+        }
+
+        /* Contact */
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid #1e1e1e;
+            text-decoration: none;
+            color: inherit;
+        }
+        .contact-item:last-child { border-bottom: none; }
+        .contact-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: #1a2840;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+        .contact-text { font-size: 13px; }
+        .contact-text .label { color: #555; font-size: 11px; margin-bottom: 1px; }
+        .contact-text .value { color: #c0c8d8; }
+
+        /* Education */
+        .edu-card {
+            background: #1a1a1a;
+            border: 1px solid #222;
+            border-radius: 12px;
+            padding: 20px;
+            border-left: 3px solid #538ddc;
+        }
+        .edu-card h3 { font-size: 15px; font-weight: 600; color: #e8e8e8; margin-bottom: 4px; }
+        .edu-card p { font-size: 13px; color: #666; }
+
+        /* Projects placeholder */
+        .project-card {
+            background: #1a1a1a;
+            border: 1px solid #222;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 14px;
+        }
+        .project-card h3 { font-size: 15px; font-weight: 600; color: #e8e8e8; margin-bottom: 6px; }
+        .project-card p { font-size: 13px; color: #666; line-height: 1.6; }
+
+        /* Sidebar heading */
+        .sidebar .section-title { color: #7fb3f5; }
+
+        @media (max-width: 680px) {
+            .hero { flex-direction: column; padding: 40px 24px; text-align: center; }
+            .content { grid-template-columns: 1fr; }
+            .main { padding: 32px 24px; }
+            .sidebar { padding: 32px 24px; }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- Hero -->
+    <div class="hero">
+        <div class="avatar">จ</div>
+        <div class="hero-text">
+            <div class="role">Web Developer</div>
+            <h1>นายจิรเมธ คล่องดี</h1>
+            <p class="bio">นักพัฒนาเว็บไซต์ที่สนใจการออกแบบ UI/UX และชอบสร้างเว็บที่เรียบง่ายแต่ดูดี มุ่งมั่นสร้างประสบการณ์ผู้ใช้ที่ดีที่สุด</p>
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Main -->
+        <div class="main">
+
+            <div class="section">
+                <div class="section-title">Skills</div>
+                <div class="skill-group">
+                    <div class="skill-label"><span>HTML / CSS</span><span style="color:#538ddc">90%</span></div>
+                    <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
+                </div>
+                <div class="skill-group">
+                    <div class="skill-label"><span>JavaScript</span><span style="color:#538ddc">75%</span></div>
+                    <div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div>
+                </div>
+                <div class="skill-group">
+                    <div class="skill-label"><span>Python</span><span style="color:#538ddc">65%</span></div>
+                    <div class="skill-bar"><div class="skill-fill" style="width:65%"></div></div>
+                </div>
+                <div class="skill-group">
+                    <div class="skill-label"><span>UI/UX Design</span><span style="color:#538ddc">70%</span></div>
+                    <div class="skill-bar"><div class="skill-fill" style="width:70%"></div></div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Education</div>
+                <div class="edu-card">
+                    <h3>มหาวิทยาลัยมหาสารคาม</h3>
+                    <p>สาขาวิทยาการคอมพิวเตอร์ · 2022 – ปัจจุบัน</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Projects</div>
+                <div class="project-card">
+                    <h3>Personal Resume Website</h3>
+                    <p>เว็บไซต์ Resume ส่วนตัวพัฒนาด้วย HTML, CSS และ JavaScript พร้อม deploy บน GitHub Pages</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+
+            <div class="section">
+                <div class="section-title">Contact</div>
+                <a href="https://www.facebook.com/jiramet.mon.2025" target="_blank" class="contact-item">
+                    <div class="contact-icon">f</div>
+                    <div class="contact-text">
+                        <div class="label">Facebook</div>
+                        <div class="value">Jiramet mon</div>
+                    </div>
+                </a>
+                <div class="contact-item">
+                    <div class="contact-icon">@</div>
+                    <div class="contact-text">
+                        <div class="label">Email</div>
+                        <div class="value">jirametkhlongdee<br>@gmail.com</div>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">gh</div>
+                    <div class="contact-text">
+                        <div class="label">GitHub</div>
+                        <div class="value">cirmethkhlxngdi9-boop</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Tools & Tech</div>
+                <div class="tags">
+                    <span class="tag">VS Code</span>
+                    <span class="tag">Git</span>
+                    <span class="tag">GitHub</span>
+                    <span class="tag">Figma</span>
+                    <span class="tag">XAMPP</span>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Languages</div>
+                <div class="skill-group">
+                    <div class="skill-label"><span>ภาษาไทย</span></div>
+                    <div class="skill-bar"><div class="skill-fill" style="width:100%"></div></div>
+                </div>
+                <div class="skill-group">
+                    <div class="skill-label"><span>English</span></div>
+                    <div class="skill-bar"><div class="skill-fill" style="width:55%"></div></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>
